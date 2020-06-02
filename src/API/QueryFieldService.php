@@ -137,6 +137,9 @@ final class QueryFieldService implements QueryFieldServiceInterface, QueryFieldL
 
     private function prepareQuery(Content $content, Location $location, string $fieldDefinitionIdentifier, array $extraParameters = []): Query
     {
+        // @todo change to actual main location
+        $mainLocation = $location;
+
         $fieldDefinition = $this->loadFieldDefinition($content, $fieldDefinitionIdentifier);
 
         $queryType = $this->queryTypeRegistry->getQueryType($fieldDefinition->fieldSettings['QueryType']);
@@ -148,8 +151,7 @@ final class QueryFieldService implements QueryFieldServiceInterface, QueryFieldL
                     'content' => $content,
                     'contentInfo' => $content->contentInfo,
                     'location' => $location,
-                    // @todo change to actual main location
-                    'mainLocation' => $location,
+                    'mainLocation' => $mainLocation,
                     'returnedType' => $fieldDefinition->fieldSettings['ReturnedType'],
                 ]
             )
