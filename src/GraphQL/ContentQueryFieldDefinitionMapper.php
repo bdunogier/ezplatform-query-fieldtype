@@ -81,9 +81,9 @@ final class ContentQueryFieldDefinitionMapper extends DecoratingFieldDefinitionM
         }
 
         if ($fieldDefinition->fieldSettings['EnablePagination']) {
-            return 'Relay::Connection';
+            return 'ContentQueryFieldWithPagination';
         } else {
-            return null;
+            return 'ContentQueryField';
         }
     }
 

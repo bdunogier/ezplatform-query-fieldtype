@@ -6,6 +6,7 @@
  */
 namespace EzSystems\EzPlatformQueryFieldType\Symfony\DependencyInjection;
 
+use EzSystems\EzPlatformQueryFieldType\GraphQL\ArgsBuilder;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -103,6 +104,18 @@ final class EzSystemsEzPlatformQueryFieldTypeExtension extends Extension impleme
                         ],
                     ],
                 ],
+                'builders' => [
+                    'args' => [
+                        [
+                            'alias' => 'ContentQueryField',
+                            'class' => ArgsBuilder\ContentQueryField::class,
+                        ],
+                        [
+                            'alias' => 'ContentQueryFieldWithPagination',
+                            'class' => ArgsBuilder\ContentQueryFieldWithPagination::class,
+                        ],
+                    ]
+                ]
             ],
         ]);
     }
